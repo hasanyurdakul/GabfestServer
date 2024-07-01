@@ -7,6 +7,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        CreateMap<User, UserModel>().ReverseMap();
         CreateMap<User, UserCreateModel>().ReverseMap();
     }
 }
