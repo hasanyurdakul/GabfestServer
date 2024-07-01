@@ -9,5 +9,6 @@ public class MappingProfile : Profile
     {
         CreateMap<User, UserModel>().ReverseMap();
         CreateMap<User, UserCreateModel>().ReverseMap();
+        CreateMap<User, UserUpdateModel>().ReverseMap();
     }
 }
