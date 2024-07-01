@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "name": "C#: Gabfest.API Debug",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/Gabfest.API/Gabfest.API.csproj"
+    }
+  ]
+}
