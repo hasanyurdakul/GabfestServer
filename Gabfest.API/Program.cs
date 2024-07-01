@@ -1,4 +1,5 @@
 using Gabfest.Data;
+using Gabfest.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
