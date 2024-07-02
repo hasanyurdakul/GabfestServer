@@ -1,5 +1,6 @@
 using System.Text;
 using AutoMapper;
+using Gabfest.API;
 using Gabfest.Data;
 using Gabfest.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+//SignalR
+builder.Services.AddSignalR();
 //Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(config =>
@@ -95,10 +98,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 
-app.MapControllers();
-
+//Added After SignalR
+//app.MapControllers();
+app.UseRouting();
 app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHub<GabfestHub>("/gabfesthub");
+});
+
+
 
 app.Run();
