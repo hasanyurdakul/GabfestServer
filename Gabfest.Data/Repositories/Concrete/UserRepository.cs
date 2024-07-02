@@ -8,9 +8,10 @@ public class UserRepository : IUserRepository
     private readonly IGenericRepository<User> _genericRepository;
     private readonly GabfestDbContext _context;
 
-    public UserRepository(IGenericRepository<User> genericRepository)
+    public UserRepository(IGenericRepository<User> genericRepository, GabfestDbContext context)
     {
         _genericRepository = genericRepository;
+        _context = context;
     }
 
     public async Task<User> AddAsync(User entity)
