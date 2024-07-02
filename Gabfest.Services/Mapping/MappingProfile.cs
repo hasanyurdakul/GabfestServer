@@ -15,6 +15,9 @@ public class MappingProfile : Profile
         CreateMap<Message, MessageModel>().ReverseMap();
         CreateMap<Message, MessageCreateModel>().ReverseMap();
         CreateMap<Message, MessageUpdateModel>().ReverseMap();
-
+        //Group Mappings
+        CreateMap<Group, GroupModel>().ReverseMap();
+        CreateMap<Group, GroupCreateModel>().ReverseMap();
+        CreateMap<Group, GroupUpdateModel>().ReverseMap();
     }
 }
