@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Gabfest.Data;
 using Gabfest.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gabfest.API;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
