@@ -1,9 +1,12 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 namespace Gabfest.Data;
 
 public class UserRepository : IUserRepository
 {
     private readonly IGenericRepository<User> _genericRepository;
+    private readonly GabfestDbContext _context;
 
     public UserRepository(IGenericRepository<User> genericRepository)
     {
@@ -39,4 +42,10 @@ public class UserRepository : IUserRepository
     {
         return await _genericRepository.UpdateAsync(entity);
     }
+
+    public async Task<User> GetUserByUsernameAndPasswordAsync(string username, string password)
+    {
+        return await _context.Users.FirstOrDefaultAsync(x => x.Username == username && x.Password == password);
+    }
+
 }
