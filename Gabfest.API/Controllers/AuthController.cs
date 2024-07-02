@@ -34,7 +34,7 @@ public class AuthController : ControllerBase
         {
             Username = user.Username,
             Role = user.Role,
-            SignInKey = _configuration["JWT:SignInKey"],
+            SigningKey = _configuration["JWT:SigningKey"],
             Issuer = _configuration["JWT:Issuer"],
             Audience = _configuration["JWT:Audience"]
         };

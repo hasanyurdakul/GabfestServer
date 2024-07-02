@@ -14,7 +14,7 @@ public static class JWTHelper
             new Claim(ClaimTypes.Role, tokenModel.Role)
         };
 
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenModel.SignInKey));
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenModel.SigningKey));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
         var jwtSecurityToken = new JwtSecurityToken(
             issuer: tokenModel.Issuer,
