@@ -10,7 +10,6 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 //Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -49,6 +48,15 @@ builder.Services.AddDbContext<GabfestDbContext>(options =>
 //Repositories and Services
 builder.Services.RegisterRepositories();
 builder.Services.RegisterServices();
+//CORS
+var corsPolicyName = "CorsPolicy";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicyName, builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 //AutoMapper
 var mapperConfig = new MapperConfiguration(mc =>
 {
@@ -75,6 +83,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 
 var app = builder.Build();
+
+app.UseCors(corsPolicyName);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
