@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Gabfest.Data;
 using Gabfest.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gabfest.API;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class GroupController : ControllerBase
 {
     private readonly IGroupService _groupService;
