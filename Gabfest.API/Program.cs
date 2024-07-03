@@ -51,6 +51,8 @@ builder.Services.AddDbContext<GabfestDbContext>(options =>
 //Repositories and Services
 builder.Services.RegisterRepositories();
 builder.Services.RegisterServices();
+//SignalR Connection Helper
+builder.Services.AddSingleton<ISignalRConnection, SignalRConnection>();
 //CORS
 var corsPolicyName = "CorsPolicy";
 builder.Services.AddCors(options =>
